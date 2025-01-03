@@ -21,16 +21,25 @@ function removeTodoElemrnt(state, action) {
     state.todos = state.todos.filter((todo) => todo.id !== action.payload);
 }
 
+function updateTodoElement(state,action){
+    const {id , text} = action.payload;
+    const todos = state.todos.find((todo) => todo.id === id);
+    if (todos) {
+        todos.text = text;
+    } 
+}
+
 // step-5
 export const todoSlice = createSlice({
     name: 'todo',
     initialState,   // step-4 used
     reducers: {     // reducer
         addTodo : sayHello,   // step-6 used
-        removeTodo: removeTodoElemrnt
+        removeTodo: removeTodoElemrnt,
+        updateTodo: updateTodoElement
     }
 })
 
 // step-8
-export const {addTodo , removeTodo} = todoSlice.actions   // export functionality
+export const {addTodo , removeTodo , updateTodo} = todoSlice.actions   // export functionality
 export default todoSlice.reducer  
