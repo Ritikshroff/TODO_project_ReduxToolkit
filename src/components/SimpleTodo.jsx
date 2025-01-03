@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeTodo, updateTodo } from '../features/Todo/todoSlice';
 
 function Todos() {
-  const todos = useSelector((state) => state.todos);
+  const Accessingtodos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
   const [editId, setEditId] = useState(null); // Tracks which todo is being edited
   const [updatedText, setUpdatedText] = useState(""); // Stores the updated text
@@ -19,7 +19,7 @@ function Todos() {
   return (
     <>
       <ul className="list-none p-8 m-4">
-        {todos.map((todo) => (
+        {Accessingtodos.map((todo) => (
           <li
             className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded"
             key={todo.id}
@@ -31,7 +31,7 @@ function Todos() {
                 onChange={(e) => setUpdatedText(e.target.value)}
                 className="text-black px-2 py-1 rounded"
                 placeholder='Update Todo'
-                required
+                required 
               />
             ) : (
               <div className="text-white">{todo.text}</div>
@@ -51,7 +51,7 @@ function Todos() {
                     setEditId(todo.id);
                     setUpdatedText(todo.text); // Pre-fill the input with the current text
                   }}
-                  className="text-white bg-blue-500 border-0 py-1 px-4 focus:outline-none hover:bg-blue-600 rounded text-md"
+                  className="text-white bg-[#4f46e5] border-0 py-1 px-4 focus:outline-none hover:bg-blue-600 rounded text-md"
                 >
                   Update
                 </button>
